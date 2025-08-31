@@ -1,0 +1,27 @@
+import { NextRequest, NextResponse } from "next/server"
+
+export async function POST(req: NextRequest) {
+  const body = await req.json()
+  const r = await fetch(`${process.env.BACKEND_URL}/auth/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  })
+
+  const data = await r.json()
+  if (!r.ok) return NextResponse.json({ error: data?.message ?? "Register failed" }, { status: r.status })
+
+  // If backend returns { token }, set it as httpOnly cookie:
+  const token = data?.token as string | undefined
+  const res = NextResponse.json(data)
+  if (token) {
+    res.cookies.set("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 ,
+    })
+  }
+  return res
+}
