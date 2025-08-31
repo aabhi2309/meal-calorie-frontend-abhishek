@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button"
 import { type CaloriesResponse } from "@/types/apis"
 import { useRouter } from "next/navigation"
 
-// Schema
 const schema = z.object({
   dish_name: z.string().min(1, "Dish name is required"),
   servings: z.number().int().positive().max(50, "Too many servings"),
@@ -37,7 +36,7 @@ export default function MealForm() {
       setResult(res)
       reset({ dish_name: values.dish_name, servings: values.servings })
       /* eslint-disable @typescript-eslint/no-explicit-any */
-      router.push("/calories") // ✅ go to calories page
+      router.push("/calories") 
     } catch (e: any) {
       setError(e.message || "Lookup failed")
     }
@@ -45,12 +44,10 @@ export default function MealForm() {
 
   return (
     <div className="space-y-8">
-      {/* Form Card */}
       <div className="rounded-xl bg-card p-6 shadow-md border border-border">
         <h2 className="text-xl font-semibold mb-4 text-foreground">🍽️ Meal Calculator</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {/* Dish Name */}
           <div className="sm:col-span-2">
             <Label htmlFor="dish_name" className="text-foreground mb-1 block">
               Dish name
@@ -64,7 +61,6 @@ export default function MealForm() {
             <p className="text-sm text-destructive">{formState.errors.dish_name?.message}</p>
           </div>
 
-          {/* Servings */}
           <div>
             <Label htmlFor="servings" className="text-foreground mb-1 block">
               Servings
@@ -79,7 +75,6 @@ export default function MealForm() {
             <p className="text-sm text-destructive">{formState.errors.servings?.message}</p>
           </div>
 
-          {/* Submit */}
           <div className="sm:col-span-3 flex justify-end">
             {error && <p className="text-sm text-destructive mr-auto">{error}</p>}
             <Button

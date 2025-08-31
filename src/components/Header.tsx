@@ -21,7 +21,6 @@ export default function Header({ showLogout = true }: { showLogout?: boolean }) 
 
   return (
     <div className="flex items-center justify-between px-6 py-2 sm:px-12 md:px-16 lg:px-24 border-b border-border">
-      {/* Logo + App name */}
       <div
         className="flex items-center space-x-2 cursor-pointer"
         onClick={() => router.push("/")}
@@ -34,7 +33,6 @@ export default function Header({ showLogout = true }: { showLogout?: boolean }) 
         </h1>
       </div>
 
-      {/* Right side */}
       <div className="flex items-center space-x-3">
         <ThemeToggle />
         {showLogout && (

@@ -15,7 +15,6 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    // ⬇️ add suppressHydrationWarning (optional: add a default class to reduce FOUC)
     <html lang="en" suppressHydrationWarning className="light">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

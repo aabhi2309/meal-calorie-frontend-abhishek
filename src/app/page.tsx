@@ -13,7 +13,7 @@ export default function HomePage() {
       className="min-h-screen w-full flex flex-col transition-colors"
       style={{ background: "var(--hero-gradient)", color: "var(--foreground)" }}
     >
-      <Header />
+      <Header showLogout={false} />
 
       <main className="flex flex-1 items-center justify-center px-6 sm:px-16 md:px-24 lg:px-40">
         <div className="text-center max-w-3xl">
@@ -30,7 +30,7 @@ export default function HomePage() {
             onClick={() => router.push("/login")}
             className="px-8 py-3 bg-primary text-primary-foreground hover:opacity-90 transition font-semibold rounded-lg text-lg"
           >
-            Start Tracking
+            Lets Start
           </Button>
         </div>
       </main>

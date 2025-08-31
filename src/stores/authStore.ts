@@ -1,7 +1,7 @@
 "use client"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
-import { useMealStore } from "@/stores/mealStore" // ✅ import meal store
+import { useMealStore } from "@/stores/mealStore" 
 
 type User = { first_name?: string; last_name?: string; email: string } | null
 type State = { user: User; isAuthed: boolean }
@@ -15,9 +15,7 @@ export const useAuthStore = create<State & Actions>()(
       setUser: (u) => set({ user: u }),
       setAuthed: (v) => set({ isAuthed: v }),
       logout: () => {
-        // reset auth
         set({ user: null, isAuthed: false })
-        // reset meals
         useMealStore.getState().clear()
       },
     }),

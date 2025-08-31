@@ -8,7 +8,6 @@ export default function ResultCard({ result }: { result: CaloriesResponse }) {
 
   return (
     <Card className="rounded-2xl bg-card border border-border shadow-lg overflow-hidden transition-colors">
-      {/* Header */}
       <CardHeader className="bg-gradient-to-r from-green-400 via-teal-400 to-sky-500 p-6">
         <CardTitle className="text-white text-xl font-bold tracking-wide">
           🍽️ {dish_name}
@@ -16,14 +15,12 @@ export default function ResultCard({ result }: { result: CaloriesResponse }) {
       </CardHeader>
 
       <CardContent className="p-6 space-y-6">
-        {/* Total Calories Highlight */}
         <div className="text-center">
           <p className="text-muted-foreground text-sm">Total Calories</p>
           <p className="text-4xl font-extrabold text-foreground">{total_calories}</p>
           <p className="text-sm text-muted-foreground">kcal</p>
         </div>
 
-        {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-6">
           <div className="flex flex-col items-center p-4 rounded-lg bg-background border border-border">
             <span className="text-sm text-muted-foreground">Servings</span>
@@ -36,7 +33,6 @@ export default function ResultCard({ result }: { result: CaloriesResponse }) {
           </div>
         </div>
 
-        {/* Source */}
         <div className="pt-4 border-t border-border text-center text-xs text-muted-foreground">
           Source: {source}
         </div>

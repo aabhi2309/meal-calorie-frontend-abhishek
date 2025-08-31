@@ -7,7 +7,6 @@ export default function Page() {
       className="min-h-screen w-full flex flex-col transition-colors"
       style={{ background: "var(--hero-gradient)", color: "var(--foreground)" }}
     >
-      {/* Common header (no logout button) */}
       <Header showLogout={false} />
 
       <main className="flex flex-1 items-center justify-center px-6 sm:px-16 md:px-24 lg:px-40">

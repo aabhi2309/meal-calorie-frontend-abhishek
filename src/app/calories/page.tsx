@@ -8,11 +8,9 @@ import { Button } from "@/components/ui/button"
 import Header from "@/components/Header"
 
 export default function CaloriesPage() {
-  const { history } = useMealStore()
+  const { lastResult, history } = useMealStore()  
   const [showHistory, setShowHistory] = useState(false)
   const router = useRouter()
-
-  const latest = history[history.length - 1] // most recent entry
 
   return (
     <div
@@ -24,22 +22,17 @@ export default function CaloriesPage() {
       <main className="flex-1 mx-auto w-full max-w-3xl px-4 sm:px-8 py-8 space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold text-foreground">Calorie Result</h1>
-          <Button
-            variant="ghost"
-            onClick={() => router.push("/dashboard")}
-          >
+          <Button variant="ghost" onClick={() => router.push("/dashboard")}>
             ← Back
           </Button>
         </div>
 
-        {/* Latest Result */}
-        {latest ? (
-          <ResultCard result={latest} />
+        {lastResult ? (
+          <ResultCard result={lastResult} /> 
         ) : (
           <p className="text-muted-foreground">No result yet. Go back and enter a meal.</p>
         )}
 
-        {/* History Toggle */}
         {history.length > 1 && (
           <div className="pt-4">
             <Button
@@ -56,12 +49,9 @@ export default function CaloriesPage() {
         {showHistory && history.length > 1 && (
           <div className="space-y-4 pt-4 border-t border-border">
             <h2 className="text-lg font-semibold text-foreground">History</h2>
-            {history
-              .slice(0, -1) // exclude latest
-              .reverse()    // show most recent first
-              .map((r, i) => (
-                <ResultCard key={i} result={r} />
-              ))}
+            {history.slice(1).map((r, i) => (   
+              <ResultCard key={i} result={r} />
+            ))}
           </div>
         )}
       </main>

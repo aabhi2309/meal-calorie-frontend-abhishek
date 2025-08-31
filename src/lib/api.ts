@@ -3,7 +3,7 @@ export async function postJson<T>(url: string, data: unknown, init?: RequestInit
     method: "POST",
     headers: { "Content-Type": "application/json", ...(init?.headers || {}) },
     body: JSON.stringify(data),
-    credentials: "include", // 👈 allow cookies to be sent/received
+    credentials: "include", 
   })
   if (!res.ok) {
     let msg = "Request failed"

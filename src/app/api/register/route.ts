@@ -10,8 +10,6 @@ export async function POST(req: NextRequest) {
 
   const data = await r.json()
   if (!r.ok) return NextResponse.json({ error: data?.message ?? "Register failed" }, { status: r.status })
-
-  // If backend returns { token }, set it as httpOnly cookie:
   const token = data?.token as string | undefined
   const res = NextResponse.json(data)
   if (token) {

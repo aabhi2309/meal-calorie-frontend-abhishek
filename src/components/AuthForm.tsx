@@ -10,7 +10,6 @@ import { useAuthStore } from "@/stores/authStore"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import ThemeToggle from "./ThemeToggle"
 
 const baseSchema = z.object({
   email: z.string().email(),
@@ -28,8 +27,6 @@ type Mode = "login" | "register"
 
 export default function AuthForm({ mode }: { mode: Mode }) {
   const router = useRouter()
-  // const setUser = useAuthStore((s) => s.setUser)
-  // const setAuthed = useAuthStore((s) => s.setAuthed)
 
   const { setUser, setAuthed, isAuthed } = useAuthStore()
   const [error, setError] = useState<string | null>(null)
@@ -80,7 +77,6 @@ export default function AuthForm({ mode }: { mode: Mode }) {
   >
   
     <div className="flex min-h-screen">
-      {/* Left panel (branding) */}
       <div className="hidden lg:flex mt-[-10%] flex-col justify-center items-center w-1/2 px-12 text-foreground">
         <div className="flex items-center space-x-3 mb-6">
           <div className="h-12 w-12 rounded-full bg-gradient-to-tr from-green-400 via-teal-400 to-sky-500 flex items-center justify-center">
@@ -96,7 +92,6 @@ export default function AuthForm({ mode }: { mode: Mode }) {
         </p>
       </div>
   
-      {/* Right panel (form) */}
       <div className="flex flex-1 mt-[-5%] items-center justify-center p-6">
         <div className="w-full max-w-md rounded-2xl bg-card p-8 shadow-xl backdrop-blur-md border border-border">
           <h2 className="mb-6 text-center text-2xl font-semibold text-foreground">
